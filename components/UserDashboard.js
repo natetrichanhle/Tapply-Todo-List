@@ -4,6 +4,7 @@ import TodoCard from './TodoCard'
 import { doc, setDoc, deleteField } from 'firebase/firestore'
 import { db } from '../firebase'
 import useFetchTodos from '../hooks/fetchTodos'
+import DateAndTime from './DateAndTime'
 
 export default function UserDashboard() {
     const { userInfo, currentUser } = useAuth()
@@ -12,7 +13,6 @@ export default function UserDashboard() {
     const [edditedValue, setEdditedValue] = useState('')
 
     const { todos, setTodos, loading, error } = useFetchTodos()
-    console.log(todos)
 
     // useEffect(() => {
     //     if (!userInfo || Object.keys(userInfo).length === 0) {
@@ -56,7 +56,7 @@ export default function UserDashboard() {
 
     const handleDelete = (todoKey) => {
         return async () => {
-            const tempObj = {...todos}
+            const tempObj = { ...todos }
             delete tempObj[todoKey]
             setTodos(tempObj)
             const userRef = doc(db, 'users', currentUser.uid)
@@ -70,6 +70,7 @@ export default function UserDashboard() {
 
     return (
         <div className='w-full max-w-[65ch] mx-auto flex flex-col flex-1 gap-3 sm:gap-5 text-xs sm:text-sm'>
+            <DateAndTime />
             <div className='flex items-stretch'>
                 <input type='text' placeholder='Enter Task' value={todo} onChange={(e) => setTodo(e.target.value)} className='outline-none p-3 text-base sm:text-lg text-slate-900 flex-1' />
                 <button onClick={handleAddTodo} className='w-dit px-4 sm:px-6 py-2 sm:py-3 bg-amber-400 text-white font-medium text-base duration-300 hover:opacity-40'>ADD</button>
@@ -89,6 +90,7 @@ export default function UserDashboard() {
                 </>
             )}
             {/* {!addTodo && <button onClick={() => setAddTodo(true)} className='text-cyan-300 border border-solid border-cyan-300 py-2 text-center uppercase text-lg duration-300 hover:opacity-30'>Add Todo</button>} */}
+            <div>Total Tasks: {}</div>
         </div>
     )
 }

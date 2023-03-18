@@ -6,6 +6,7 @@ export default function TodoCard(props) {
     return (
         <div className='p-2 sm:p-3 border border-white border-solid flex items-stretch relative'>
             <div className='flex-1 flex'>
+                <input type='checkbox' className='mx-2 w-4 cursor-pointer' />
                 {!(edit === todoKey) ? <>{children}</> : (
                     <input className='bg-inherit text-white outline-none flex-1' value={edittedValue} onChange={(e) => setEdditedValue(e.target.value)} />
                 )}
