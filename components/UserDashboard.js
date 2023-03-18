@@ -72,8 +72,8 @@ export default function UserDashboard() {
         <div className='w-full max-w-[65ch] mx-auto flex flex-col flex-1 gap-3 sm:gap-5 text-xs sm:text-sm'>
             <DateAndTime />
             <div className='flex items-stretch'>
-                <input type='text' placeholder='Enter Task' value={todo} onChange={(e) => setTodo(e.target.value)} className='outline-none p-3 text-base sm:text-lg text-slate-900 flex-1' />
-                <button onClick={handleAddTodo} className='w-dit px-4 sm:px-6 py-2 sm:py-3 bg-amber-400 text-white font-medium text-base duration-300 hover:opacity-40'>ADD</button>
+                <input type='text' placeholder='Enter Task' value={todo} onChange={(e) => setTodo(e.target.value)} className='outline-none p-3 text-base sm:text-lg text-slate-900 flex-1 rounded-l-lg' />
+                <button onClick={handleAddTodo} className='w-dit px-4 sm:px-6 py-2 sm:py-3 bg-blue-800 text-white font-medium text-base duration-300 hover:opacity-40 rounded-r-lg'>ADD</button>
             </div>
             {(loading) && (<div className='flex-1 grid  place-items-center'>
                 <i className="fa-solid fa-spinner animate-spin text-6xl"></i>

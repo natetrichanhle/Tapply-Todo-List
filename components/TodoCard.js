@@ -4,7 +4,7 @@ export default function TodoCard(props) {
     const { children, edit, handleAddEdit, edittedValue, setEdditedValue, todoKey, handleEditTodo, handleDelete } = props
 
     return (
-        <div className='p-2 sm:p-3 border border-white border-solid flex items-stretch relative'>
+        <div className='p-2 sm:p-3 border border-white border-solid flex items-stretch relative rounded-lg'>
             <div className='flex-1 flex'>
                 <input type='checkbox' className='mx-2 w-4 cursor-pointer' />
                 {!(edit === todoKey) ? <>{children}</> : (
