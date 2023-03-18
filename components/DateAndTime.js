@@ -31,7 +31,7 @@ export default function DateAndTime() {
             display: 'flex',
             alignItems: 'flex-end',
             justifyContent: 'center',
-            zIndex: '10',
+            // zIndex: '10',
             fontSize: '30px',
         },
         h1: {
@@ -46,7 +46,7 @@ export default function DateAndTime() {
             justifyContent: 'center',
             background: 'rgba(255,255,255,0.2)',
             boxShadow: '0.1em 0.5em 0.5em, 0.5em rgba(0,0,0,0.5)',
-            webkitBoxReflect: 'below 1px linear-gradient( transparent, #0005)',
+            WebkitBoxReflect: 'below 1px linear-gradient( transparent, #0005)',
         },
         h2: {
             transition: '0.5s',
@@ -60,7 +60,7 @@ export default function DateAndTime() {
             justifyContent: 'center',
             background: 'rgba(255,255,255,0.2)',
             boxShadow: '0.1em 0.5em 0.5em, 5em rgba(0,0,0,0.5)',
-            webkitBoxReflect: 'below 1px linear-gradient( transparent, #0005)',
+            WebkitBoxReflect: 'below 1px linear-gradient( transparent, #0005)',
         }
     }
 

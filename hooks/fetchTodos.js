@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { doc, getDoc } from 'firebase/firestore'
+import { collection, doc, getDoc } from 'firebase/firestore'
 import { useAuth } from '../context/AuthContext'
 import { db } from '../firebase'
 
@@ -17,6 +17,7 @@ export default function fetchTodos() {
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
                     setTodos(docSnap.data().todos)
+                    // console.log(docSnap.data())
                 } else {
                     setTodos({})
                 }

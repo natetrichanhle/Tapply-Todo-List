@@ -11,8 +11,11 @@ export default function UserDashboard() {
     const [edit, setEdit] = useState(null)
     const [todo, setTodo] = useState('')
     const [edditedValue, setEdditedValue] = useState('')
+    const [completed, setCompleted] = useState(false)
+    const [countTasks, setCountTasks] = useState(0)
 
     const { todos, setTodos, loading, error } = useFetchTodos()
+
 
     // useEffect(() => {
     //     if (!userInfo || Object.keys(userInfo).length === 0) {
@@ -25,9 +28,13 @@ export default function UserDashboard() {
         const newKey = Object.keys(todos).length === 0 ? 1 : Math.max(...Object.keys(todos)) + 1
         const userRef = doc(db, 'users', currentUser.uid)
         setTodos({ ...todos, [newKey]: todo })
+        setCountTasks(countTasks + 1)
         await setDoc(userRef, {
             'todos': {
                 [newKey]: todo
+            },
+            'completed': {
+                [newKey]: completed
             }
         }, { merge: true })
         setTodo('')
@@ -59,9 +66,13 @@ export default function UserDashboard() {
             const tempObj = { ...todos }
             delete tempObj[todoKey]
             setTodos(tempObj)
+            setCountTasks(countTasks - 1)
             const userRef = doc(db, 'users', currentUser.uid)
             await setDoc(userRef, {
                 'todos': {
+                    [todoKey]: deleteField()
+                },
+                'completed': {
                     [todoKey]: deleteField()
                 }
             }, { merge: true })
@@ -90,7 +101,7 @@ export default function UserDashboard() {
                 </>
             )}
             {/* {!addTodo && <button onClick={() => setAddTodo(true)} className='text-cyan-300 border border-solid border-cyan-300 py-2 text-center uppercase text-lg duration-300 hover:opacity-30'>Add Todo</button>} */}
-            <div>Total Tasks: {}</div>
+            <h3>Total Tasks: {countTasks}</h3>
         </div>
     )
 }
